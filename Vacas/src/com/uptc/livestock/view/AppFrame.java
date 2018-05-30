@@ -8,6 +8,6 @@ public class AppFrame extends JFrame {
 	}
 
 	private void init() {
-
+		this.setVisible(true);
 	}
 }
