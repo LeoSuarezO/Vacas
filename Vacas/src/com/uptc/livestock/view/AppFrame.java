@@ -8,6 +8,7 @@ public class AppFrame extends JFrame {
 	}
 
 	private void init() {
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}
 }
