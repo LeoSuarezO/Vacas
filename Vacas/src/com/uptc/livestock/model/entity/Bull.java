@@ -1,4 +1,4 @@
-package com.uptc.livestock.model;
+package com.uptc.livestock.model.entity;
 
 import java.util.Date;
 
