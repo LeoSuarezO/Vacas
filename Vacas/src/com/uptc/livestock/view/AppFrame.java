@@ -4,7 +4,8 @@ import javax.swing.JFrame;
 
 public class AppFrame extends JFrame {
 	public AppFrame() {
-		new LogInJDialog();
+		new LogInJDialog(new String[] { "Usuario", "        ", "INGRESAR AL SERVICIO", "Ingresar", "Crear cuenta",
+				"\u00BFOlvido su contrase\u00F1a?" });
 		init();
 	}
 
