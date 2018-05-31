@@ -1,7 +1,5 @@
 package com.uptc.livestock.model.entity;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.uptc.livestock.utilities.Utilities;
