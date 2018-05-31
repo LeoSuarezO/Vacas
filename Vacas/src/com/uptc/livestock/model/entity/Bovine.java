@@ -15,13 +15,13 @@ public class Bovine {
 
 	private short id;
 	private String name;
-	private Date birthDate;
+	private MyDate birthDate;
 	private Race race;
 	private double weight;
 	private String vaccine;
 	private HealthCondition healthCondition;
 
-	public Bovine(short id, String name, Date birthDate, Race race, double weight, String vaccine,
+	public Bovine(short id, String name, MyDate birthDate, Race race, double weight, String vaccine,
 			HealthCondition healthCondition) {
 		this.id = id;
 		this.name = name;
@@ -31,7 +31,12 @@ public class Bovine {
 		this.vaccine = vaccine;
 		this.healthCondition = healthCondition;
 	}
-
+	
+	
+	public short getAge() {
+		return (short) (MyDate.getCurrentYear() - this.birthDate.getYear());
+	}
+	
 	/**
 	 * Obtiene la identificacion del bovino
 	 * 
@@ -80,7 +85,7 @@ public class Bovine {
 	 * @return Feha de nacimiento
 	 */
 
-	public Date getBirthDate() {
+	public MyDate getBirthDate() {
 		return birthDate;
 	}
 
@@ -91,7 +96,7 @@ public class Bovine {
 	 *            Fecha de nacimiento
 	 */
 
-	public void setBirthDate(Date birthDate) {
+	public void setBirthDate(MyDate birthDate) {
 		this.birthDate = birthDate;
 	}
 
