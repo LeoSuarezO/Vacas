@@ -5,6 +5,7 @@ import java.util.Date;
 /**
  * Clase Bovine
  * 
+ * @since 1.8
  * @author Andres Chaparro, Fabian Cristancho, David Malaver, Kevin Suerez
  *         Fecha: 30/05/2018
  *
