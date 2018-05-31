@@ -24,13 +24,12 @@ import java.awt.GridLayout;
 public class LogInJDialog extends JDialog {
 	private HintJTextField usernameField;
 	private HintJPasswordField passwordField;
-
-	public LogInJDialog() {
+	public LogInJDialog(String[] strings) {
 		LivestockListener.getIntance().setLogInJDialog(this);
-		init();
+		init(strings);
 	}
 
-	private void init() {
+	private void init(String[] strings) {
 		setBounds(100, 100, 450, 300);
 		
 		JPanel contentPanel = new JPanel();
@@ -40,11 +39,11 @@ public class LogInJDialog extends JDialog {
 		contentPanel = new JPanel();
 		contentPanel.setOpaque(false);
 		
-		usernameField = new HintJTextField("Usuario");
+		usernameField = new HintJTextField(strings[0]);
 		usernameField.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		usernameField.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		passwordField = new HintJPasswordField("00000000");
+		passwordField = new HintJPasswordField(strings[1]);
 		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		passwordField.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -55,7 +54,7 @@ public class LogInJDialog extends JDialog {
 		gb_contentpanel.columnWidths = new int[] { 209 };
 		contentPanel.setLayout(gb_contentpanel);
 
-		JLabel showingLabel = new JLabel("INGRESAR AL SERVICIO");
+		JLabel showingLabel = new JLabel(strings[2]);
 		showingLabel.setForeground(Color.WHITE);
 		showingLabel.setFont(new Font("Arial", Font.PLAIN, 20));
 		
@@ -80,7 +79,7 @@ public class LogInJDialog extends JDialog {
 		gbc_passwordField.gridy = 2;
 		contentPanel.add(passwordField, gbc_passwordField);
 
-		JButton logInButton = new JButton("Ingresar");
+		JButton logInButton = new JButton(strings[3]);
 		
 		logInButton.addActionListener(LivestockListener.getIntance());
 		logInButton.setActionCommand(Command.LOGIN_ACCOUNT.toString());
@@ -116,7 +115,7 @@ public class LogInJDialog extends JDialog {
 		getContentPane().add(optionPanel, BorderLayout.SOUTH);
 		
 		
-		JButton signInButton = new JButton("Crear cuenta");
+		JButton signInButton = new JButton(strings[4]);
 		signInButton.addActionListener(LivestockListener.getIntance());
 		signInButton.setActionCommand(Command.CREATE_ACCOUNT.toString());
 		signInButton.setOpaque(false);
@@ -124,7 +123,7 @@ public class LogInJDialog extends JDialog {
 		signInButton.setForeground(Color.WHITE);
 		signInButton.setBorder(null);
 		
-		JButton forgetPasswordButton = new JButton("\u00BFOlvido su contrase\u00F1a?");
+		JButton forgetPasswordButton = new JButton(strings[5]);
 		forgetPasswordButton.addActionListener(LivestockListener.getIntance());
 		forgetPasswordButton.setActionCommand(Command.FORGET_PASSWORD.toString());
 		forgetPasswordButton.setOpaque(false);
