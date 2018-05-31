@@ -8,9 +8,12 @@ import javax.swing.JTextField;
 
 public class HintJTextField extends JTextField implements FocusListener {
 	private static final long serialVersionUID = 1L;
-	private final String hint;
+	private String hint;
 	private boolean showingHint;
 
+	public HintJTextField() {
+		this(" ");
+	}
 	public HintJTextField(String hint) {
 		super(hint);
 		this.setForeground(Color.gray);
@@ -39,6 +42,11 @@ public class HintJTextField extends JTextField implements FocusListener {
 			this.setForeground(Color.gray);
 			showingHint = true;
 		}
+	}
+	
+	public void setHint(String hint) {
+		this.hint = hint;
+		putHint();
 	}
 
 	public void putHint() {

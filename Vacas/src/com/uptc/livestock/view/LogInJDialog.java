@@ -24,26 +24,31 @@ import java.awt.GridLayout;
 public class LogInJDialog extends JDialog {
 	private HintJTextField usernameField;
 	private HintJPasswordField passwordField;
-	public LogInJDialog(String[] strings) {
+	private JLabel showingLabel;
+	private JButton logInButton;
+	private JButton signInButton;
+	private JButton forgetPasswordButton;
+
+	public LogInJDialog() {
 		LivestockListener.getIntance().setLogInJDialog(this);
-		init(strings);
+		init();
 	}
 
-	private void init(String[] strings) {
+	private void init() {
 		setBounds(100, 100, 450, 300);
-		
+
 		JPanel contentPanel = new JPanel();
-		
+
 		getContentPane().setBackground(new Color(100, 149, 237));
-		
+
 		contentPanel = new JPanel();
 		contentPanel.setOpaque(false);
-		
-		usernameField = new HintJTextField(strings[0]);
+
+		usernameField = new HintJTextField();
 		usernameField.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		usernameField.setHorizontalAlignment(SwingConstants.CENTER);
-		
-		passwordField = new HintJPasswordField(strings[1]);
+
+		passwordField = new HintJPasswordField();
 		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		passwordField.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -54,10 +59,10 @@ public class LogInJDialog extends JDialog {
 		gb_contentpanel.columnWidths = new int[] { 209 };
 		contentPanel.setLayout(gb_contentpanel);
 
-		JLabel showingLabel = new JLabel(strings[2]);
+		showingLabel = new JLabel();
 		showingLabel.setForeground(Color.WHITE);
 		showingLabel.setFont(new Font("Arial", Font.PLAIN, 20));
-		
+
 		GridBagConstraints gbc_showingLabel = new GridBagConstraints();
 		gbc_showingLabel.insets = new Insets(0, 0, 5, 0);
 		gbc_showingLabel.gridx = 0;
@@ -79,27 +84,27 @@ public class LogInJDialog extends JDialog {
 		gbc_passwordField.gridy = 2;
 		contentPanel.add(passwordField, gbc_passwordField);
 
-		JButton logInButton = new JButton(strings[3]);
-		
+		logInButton = new JButton();
+
 		logInButton.addActionListener(LivestockListener.getIntance());
 		logInButton.setActionCommand(Command.LOGIN_ACCOUNT.toString());
 		logInButton.setBorderPainted(false);
 		logInButton.setForeground(new Color(100, 149, 237));
 		logInButton.setBackground(Color.WHITE);
-		
+
 		GridBagConstraints gbc_loginButton = new GridBagConstraints();
 		gbc_loginButton.fill = GridBagConstraints.BOTH;
 		gbc_loginButton.gridx = 0;
 		gbc_loginButton.gridy = 3;
 		contentPanel.add(logInButton, gbc_loginButton);
-		
+
 		getContentPane().add(contentPanel);
-		
+
 		JPanel closePanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 20, 5));
 		closePanel.setBackground(new Color(100, 149, 237));
-		closePanel.setPreferredSize(new Dimension(0,20));
+		closePanel.setPreferredSize(new Dimension(0, 20));
 		getContentPane().add(closePanel, BorderLayout.NORTH);
-		
+
 		JButton closeButton = new JButton("X");
 		closeButton.addActionListener(LivestockListener.getIntance());
 		closeButton.setActionCommand(Command.DISPOSE_LOGIN_JDIALOG.toString());
@@ -108,38 +113,46 @@ public class LogInJDialog extends JDialog {
 		closeButton.setForeground(Color.WHITE);
 		closeButton.setBorder(null);
 		closePanel.add(closeButton);
-		
+
 		JPanel optionPanel = new JPanel(new GridLayout(1, 2));
 		optionPanel.setBackground(new Color(100, 149, 237));
-		optionPanel.setPreferredSize(new Dimension(0,20));
+		optionPanel.setPreferredSize(new Dimension(0, 20));
 		getContentPane().add(optionPanel, BorderLayout.SOUTH);
-		
-		
-		JButton signInButton = new JButton(strings[4]);
+
+		signInButton = new JButton();
 		signInButton.addActionListener(LivestockListener.getIntance());
 		signInButton.setActionCommand(Command.CREATE_ACCOUNT.toString());
 		signInButton.setOpaque(false);
 		signInButton.setContentAreaFilled(false);
 		signInButton.setForeground(Color.WHITE);
 		signInButton.setBorder(null);
-		
-		JButton forgetPasswordButton = new JButton(strings[5]);
+
+		forgetPasswordButton = new JButton();
 		forgetPasswordButton.addActionListener(LivestockListener.getIntance());
 		forgetPasswordButton.setActionCommand(Command.FORGET_PASSWORD.toString());
 		forgetPasswordButton.setOpaque(false);
 		forgetPasswordButton.setContentAreaFilled(false);
 		forgetPasswordButton.setForeground(Color.WHITE);
 		forgetPasswordButton.setBorder(null);
-		
+
 		optionPanel.add(signInButton);
 		optionPanel.add(forgetPasswordButton);
 
 		setLocationRelativeTo(null);
 		setUndecorated(true);
-		setVisible(true);
 	}
-	
+
 	public String[] getUserData() {
-		return new String[] {usernameField.getText(),passwordField.getText()};
+		return new String[] { usernameField.getText(), passwordField.getText() };
+	}
+
+	public void setStringsLanguages(String usernameHint, String passwordHint, String showingTitle, String loginButton,
+			String signinButton, String forgetPasswordButton) {
+		this.usernameField.setHint(usernameHint);
+		this.passwordField.setHint(passwordHint);
+		this.showingLabel.setText(showingTitle);
+		this.logInButton.setText(loginButton);
+		this.signInButton.setText(signinButton);
+		this.forgetPasswordButton.setText(forgetPasswordButton);
 	}
 }

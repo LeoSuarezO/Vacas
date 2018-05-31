@@ -8,9 +8,13 @@ import javax.swing.JPasswordField;
 
 public class HintJPasswordField extends JPasswordField implements FocusListener {
 	private static final long serialVersionUID = 1L;
-	private final String hint;
+	private String hint;
 	private boolean showingHint;
 
+	public HintJPasswordField() {
+		this(" ");
+	}
+	
 	public HintJPasswordField(String hint) {
 		super(hint);
 		this.setForeground(Color.gray);
@@ -41,6 +45,11 @@ public class HintJPasswordField extends JPasswordField implements FocusListener 
 		}
 	}
 
+	public void setHint(String hint) {
+		this.hint = hint;
+		putHint();
+	}
+	
 	public void putHint() {
 		setText(hint);
 		this.setForeground(Color.gray);

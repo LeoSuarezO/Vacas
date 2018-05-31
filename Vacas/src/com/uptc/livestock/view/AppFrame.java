@@ -5,14 +5,17 @@ import javax.swing.JFrame;
 import com.uptc.livestock.persistence.MyProperties;
 
 public class AppFrame extends JFrame {
+	private LogInJDialog logInJDialog;
 	public AppFrame() {
-		new LogInJDialog(new String[] { "Usuario", "        ", "INGRESAR AL SERVICIO", "Ingresar", "Crear cuenta",
-				"\u00BFOlvido su contrase\u00F1a?" });
-		init();
+		this.logInJDialog=new LogInJDialog();
+		this.init();
 	}
 
 	private void init() {
-		language(Language.ESPANIOL);
+		this.language(Language.ESPANIOL);
+		
+		logInJDialog.setVisible(true);
+		
 		this.setSize(640,480);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -22,5 +25,12 @@ public class AppFrame extends JFrame {
 	private void language(Language language) {
 		MyProperties properties = new MyProperties(language);
 		this.setTitle(properties.getProperty("title"));
+		this.logInJDialog.setStringsLanguages(
+				properties.getProperty("login_username"),
+				properties.getProperty("login_password"),
+				properties.getProperty("login_showing_title"),
+				properties.getProperty("login_button"),
+				properties.getProperty("login_signin"),
+				properties.getProperty("login_forget_password"));
 	}
 }
