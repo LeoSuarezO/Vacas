@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import com.uptc.livestock.controller.LivestockListener;
+import com.uptc.livestock.model.entity.Command;
 
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
@@ -25,6 +26,7 @@ public class LogInJDialog extends JDialog {
 	private HintJPasswordField passwordField;
 
 	public LogInJDialog() {
+		LivestockListener.getIntance().setLogInJDialog(this);
 		init();
 	}
 
@@ -99,6 +101,7 @@ public class LogInJDialog extends JDialog {
 		
 		JButton closeButton = new JButton("X");
 		closeButton.addActionListener(LivestockListener.getIntance());
+		closeButton.setActionCommand(Command.DISPOSE_LOGIN_JDIALOG.toString());
 		closeButton.setOpaque(false);
 		closeButton.setContentAreaFilled(false);
 		closeButton.setForeground(Color.WHITE);
