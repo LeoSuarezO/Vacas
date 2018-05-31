@@ -1,6 +1,5 @@
 package com.uptc.livestock.model.entity;
 
-import java.util.Date;
 
 /**
  * Clase Bovine
