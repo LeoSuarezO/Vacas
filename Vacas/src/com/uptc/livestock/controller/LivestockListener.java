@@ -19,6 +19,9 @@ public class LivestockListener implements ActionListener {
 		case DISPOSE_LOGIN_JDIALOG:
 			logInJDialog.dispose();
 			break;
+		default:
+			System.out.println("Este boton no tiene funcion aun");
+			break;
 		}
 	}
 

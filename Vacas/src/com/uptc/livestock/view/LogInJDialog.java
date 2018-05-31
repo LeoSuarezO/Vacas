@@ -82,6 +82,8 @@ public class LogInJDialog extends JDialog {
 
 		JButton logInButton = new JButton("Ingresar");
 		
+		logInButton.addActionListener(LivestockListener.getIntance());
+		logInButton.setActionCommand(Command.LOGIN_ACCOUNT.toString());
 		logInButton.setBorderPainted(false);
 		logInButton.setForeground(new Color(100, 149, 237));
 		logInButton.setBackground(Color.WHITE);
@@ -116,6 +118,7 @@ public class LogInJDialog extends JDialog {
 		
 		JButton signInButton = new JButton("Crear cuenta");
 		signInButton.addActionListener(LivestockListener.getIntance());
+		signInButton.setActionCommand(Command.CREATE_ACCOUNT.toString());
 		signInButton.setOpaque(false);
 		signInButton.setContentAreaFilled(false);
 		signInButton.setForeground(Color.WHITE);
@@ -123,6 +126,7 @@ public class LogInJDialog extends JDialog {
 		
 		JButton forgetPasswordButton = new JButton("\u00BFOlvido su contrase\u00F1a??");
 		forgetPasswordButton.addActionListener(LivestockListener.getIntance());
+		forgetPasswordButton.setActionCommand(Command.FORGET_PASSWORD.toString());
 		forgetPasswordButton.setOpaque(false);
 		forgetPasswordButton.setContentAreaFilled(false);
 		forgetPasswordButton.setForeground(Color.WHITE);
