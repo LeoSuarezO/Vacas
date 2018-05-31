@@ -124,7 +124,7 @@ public class LogInJDialog extends JDialog {
 		signInButton.setForeground(Color.WHITE);
 		signInButton.setBorder(null);
 		
-		JButton forgetPasswordButton = new JButton("\u00BFOlvido su contrase\u00F1a??");
+		JButton forgetPasswordButton = new JButton("\u00BFOlvido su contrase\u00F1a?");
 		forgetPasswordButton.addActionListener(LivestockListener.getIntance());
 		forgetPasswordButton.setActionCommand(Command.FORGET_PASSWORD.toString());
 		forgetPasswordButton.setOpaque(false);
