@@ -6,6 +6,9 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.uptc.livestock.controller.LivestockListener;
+
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
@@ -20,10 +23,6 @@ import java.awt.GridLayout;
 public class LogInJDialog extends JDialog {
 	private HintJTextField usernameField;
 	private HintJPasswordField passwordField;
-
-	public static void main(String[] args) {
-		new LogInJDialog();
-	}
 
 	public LogInJDialog() {
 		init();
@@ -99,6 +98,7 @@ public class LogInJDialog extends JDialog {
 		getContentPane().add(closePanel, BorderLayout.NORTH);
 		
 		JButton closeButton = new JButton("X");
+		closeButton.addActionListener(LivestockListener.getIntance());
 		closeButton.setOpaque(false);
 		closeButton.setContentAreaFilled(false);
 		closeButton.setForeground(Color.WHITE);
@@ -112,12 +112,14 @@ public class LogInJDialog extends JDialog {
 		
 		
 		JButton signInButton = new JButton("Crear cuenta");
+		signInButton.addActionListener(LivestockListener.getIntance());
 		signInButton.setOpaque(false);
 		signInButton.setContentAreaFilled(false);
 		signInButton.setForeground(Color.WHITE);
 		signInButton.setBorder(null);
 		
 		JButton forgetPasswordButton = new JButton("\u00BFOlvido su contrase\u00F1a??");
+		forgetPasswordButton.addActionListener(LivestockListener.getIntance());
 		forgetPasswordButton.setOpaque(false);
 		forgetPasswordButton.setContentAreaFilled(false);
 		forgetPasswordButton.setForeground(Color.WHITE);
@@ -129,5 +131,9 @@ public class LogInJDialog extends JDialog {
 		setLocationRelativeTo(null);
 		setUndecorated(true);
 		setVisible(true);
+	}
+	
+	public String[] getUserData() {
+		return new String[] {usernameField.getText(),passwordField.getText()};
 	}
 }
