@@ -7,8 +7,8 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.uptc.livestock.controller.Command;
 import com.uptc.livestock.controller.LivestockListener;
-import com.uptc.livestock.model.entity.Command;
 
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;

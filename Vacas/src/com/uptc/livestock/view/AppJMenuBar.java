@@ -4,6 +4,9 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import com.uptc.livestock.controller.Command;
+import com.uptc.livestock.controller.LivestockListener;
+
 public class AppJMenuBar extends JMenuBar {
 
 	private JMenu optionsMenu;
@@ -33,6 +36,14 @@ public class AppJMenuBar extends JMenuBar {
 	}
 
 	private void init() {
+		spanishItem.addActionListener(LivestockListener.getIntance());
+		englishItem.addActionListener(LivestockListener.getIntance());
+		deutschItem.addActionListener(LivestockListener.getIntance());
+		
+		spanishItem.setActionCommand(Command.SPANISH.toString());
+		englishItem.setActionCommand(Command.ENGLISH.toString());
+		deutschItem.setActionCommand(Command.DEUTSCH.toString());
+		
 		optionsMenu.add(languageMenu);
 
 		languageMenu.add(spanishItem);

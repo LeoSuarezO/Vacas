@@ -2,6 +2,7 @@ package com.uptc.livestock.view;
 
 import javax.swing.JFrame;
 
+import com.uptc.livestock.controller.LivestockListener;
 import com.uptc.livestock.persistence.MyProperties;
 
 public class AppFrame extends JFrame {
@@ -16,7 +17,8 @@ public class AppFrame extends JFrame {
 	}
 
 	private void init() {
-		this.setLanguage(Language.ENGLISH);
+		LivestockListener.getIntance().setAppFrame(this);
+		this.setLanguage(Language.ESPANIOL);
 		
 		logInJDialog.setVisible(true);
 		
@@ -28,7 +30,7 @@ public class AppFrame extends JFrame {
 		this.setVisible(true);
 	}
 	
-	private void setLanguage(Language language) {
+	public void setLanguage(Language language) {
 		MyProperties properties = new MyProperties(language);
 		this.setTitle(properties.getProperty("title"));
 		this.logInJDialog.setStringsLanguages(
