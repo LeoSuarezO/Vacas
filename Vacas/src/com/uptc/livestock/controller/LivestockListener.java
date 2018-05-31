@@ -22,23 +22,6 @@ public class LivestockListener implements ActionListener {
 		case DISPOSE_LOGIN_JDIALOG:
 			logInJDialog.dispose();
 			break;
-		default:
-			System.out.println("Este boton "+e.getActionCommand()+" no tiene funcion aun");
-			break;
-		}
-		
-		chooseLanguage(e.getActionCommand());
-	}
-
-	public static LivestockListener getIntance() {
-		if (livestockListener == null) {
-			livestockListener = new LivestockListener();
-		}
-		return livestockListener;
-	}
-
-	private void chooseLanguage(String value) {
-		switch (Command.valueOf(value)) {
 		case SPANISH:
 			appFrame.setLanguage(Language.ESPANIOL);
 			break;
@@ -49,10 +32,16 @@ public class LivestockListener implements ActionListener {
 			appFrame.setLanguage(Language.ENGLISH);
 			break;
 		default:
-			System.out.println("Este boton "+value+" no tiene funcion aun");
+			System.out.println("Este boton "+e.getActionCommand()+" no tiene funcion aun");
 			break;
 		}
+	}
 
+	public static LivestockListener getIntance() {
+		if (livestockListener == null) {
+			livestockListener = new LivestockListener();
+		}
+		return livestockListener;
 	}
 	
 	public void setLogInJDialog(LogInJDialog logInJDialog) {
