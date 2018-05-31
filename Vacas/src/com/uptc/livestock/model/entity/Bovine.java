@@ -32,6 +32,22 @@ public class Bovine {
 	}
 	
 	
+	public double productionMeat() {
+		double meatProduce = 0;
+		switch (getRace().getCharact()) {
+		case Constant.BOVINE_AGILE:
+			meatProduce = this.weight*0.525;
+			break;
+		case Constant.BOVINE_NORMAL:
+			meatProduce = this.weight*0.45;
+			break;
+		default:
+			break;
+		}
+		return meatProduce;
+	}
+	
+	
 	public short getAge() {
 		return (short) (MyDate.getCurrentYear() - this.birthDate.getYear());
 	}

@@ -90,7 +90,7 @@ public class Cow extends Bovine {
 		case CHINO_SANTANDEREANO:
 			cantMilkProduce = 12;
 			break;
-		case COSTEÑO_CON_CUERNOS_:
+		case COSTEÑO_CON_CUERNOS:
 			cantMilkProduce = 17;
 			break;
 		case HARTON_DEL_VALLE:
