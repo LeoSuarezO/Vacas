@@ -155,7 +155,7 @@ public class SignInJDialog extends JDialog {
 	}
 
 	public String[] getUserData() {
-		return new String[] { lastNameField.getText(), passwordField.getText() };
+		return new String[] { firstNameField.getText(), lastNameField.getText(), passwordField.getText() };
 	}
 
 	public void setStringsLanguage(String firstNameHint, String lastNameHint, String passwordHint,
