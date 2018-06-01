@@ -11,16 +11,14 @@ public class PanelDataBovineMeat extends JPanel{
 	private JLabel nameBovine;
 	private JLabel raceBovine;
 	private JLabel liveWeight;
-	private JLabel deathWeight;
 	private CowGUI cowGUI;
 	
 	public PanelDataBovineMeat(CowGUI cowGUI) {
 		super();
 		this.cowGUI = cowGUI;
-		this.nameBovine = new JLabel("NOMBRE: Lola");
-		this.raceBovine = new JLabel("RAZA: Brahman");
-		this.liveWeight = new JLabel("PESO VIVO: 120");
-		this.deathWeight = new JLabel("PESO MUERTO: 75");
+		this.nameBovine = new JLabel();
+		this.raceBovine = new JLabel();
+		this.liveWeight = new JLabel();
 		init();
 	}
 
@@ -29,18 +27,15 @@ public class PanelDataBovineMeat extends JPanel{
 		this.nameBovine.setFont(new Font("constantia", Font.BOLD, 15));
 		this.raceBovine.setFont(new Font("constantia", Font.BOLD, 15));
 		this.liveWeight.setFont(new Font("constantia", Font.BOLD, 15));
-		this.deathWeight.setFont(new Font("constantia", Font.BOLD, 15));
 		this.add(nameBovine);
 		this.add(raceBovine);
 		this.add(liveWeight);
-		this.add(deathWeight);
 	}
 	
-	public void setStringsLanguaje(String nameBovine, String raceBovine, String liveWeight, String deathWeight) {
+	public void setStringsLanguaje(String nameBovine, String raceBovine, String liveWeight) {
 		this.nameBovine.setText(nameBovine +this.cowGUI.getName());
 		this.raceBovine.setText(raceBovine +cowGUI.getRace());
 		this.liveWeight.setText(liveWeight +cowGUI.getWeight());
-		this.deathWeight.setText(deathWeight);
 	}
 
 }

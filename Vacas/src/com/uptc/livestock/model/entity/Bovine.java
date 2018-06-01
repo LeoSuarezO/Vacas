@@ -31,7 +31,6 @@ public class Bovine {
 		this.healthCondition = healthCondition;
 	}
 	
-	
 	public double productionMeat() {
 		double meatProduce = 0;
 		switch (getRace().getCharact()) {

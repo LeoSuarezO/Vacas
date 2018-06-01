@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 
 public class JPanelMeatProduction extends JPanel{
 	
+	private CowGUI cowGUI;
 	private JLabel title;
 	private PanelDataBovineMeat panelDataBovineMeat;
 	private JLabel labelTotalMeat;
@@ -23,6 +24,7 @@ public class JPanelMeatProduction extends JPanel{
 	
 	public JPanelMeatProduction(CowGUI cowGUI) {
 		super();
+		this.cowGUI = cowGUI;
 		this.title = new JLabel();
 		this.labelTotalMeat = new JLabel();
 		this.panelDataBovineMeat = new PanelDataBovineMeat(cowGUI);
@@ -90,10 +92,10 @@ public class JPanelMeatProduction extends JPanel{
 		this.add(imageBovine, grConstraints);		
 	}
 	
-	public void setStringsLanguaje(String nameBovine, String raceBovine, String liveWeight, String deathWeight, String title, String totalMeat, String buttonChange, String buttonExit) {
-		this.panelDataBovineMeat.setStringsLanguaje(nameBovine, raceBovine, liveWeight, deathWeight);
+	public void setStringsLanguaje(String nameBovine, String raceBovine, String liveWeight, String title, String totalMeat, String buttonChange, String buttonExit) {
+		this.panelDataBovineMeat.setStringsLanguaje(nameBovine, raceBovine, liveWeight);
 		this.title.setText(title);
-		this.labelTotalMeat.setText(totalMeat);
+		this.labelTotalMeat.setText(totalMeat +cowGUI.productionMeat());
 		this.changeBovine.setText(buttonChange);
 		this.exit.setText(buttonExit);
 	}

@@ -18,8 +18,8 @@ public class TestViewMeatProduction {
 		Cow cow = new Cow(bovine, new MyDate((short)7, (short)5, (short)2018), 2, (short)120);
 		CowGUI cowGUI = new CowGUI(bovine, cow);
 		JPanelMeatProduction jPanelMeatProduction = new JPanelMeatProduction(cowGUI);
-		jPanelMeatProduction.setStringsLanguaje("NOMBRE DEL BOVINO: ", "RAZA DEL BOVINO: ", "PESO VIVO (Kg): ", "PESO MUERTO (kg): pendiente", "PRODUCCION DE CARNE", "TOTAL DE CARNE PRODUCIDA", "CAMBIAR DE BOVINO", "REGRESAR");
-		JFrame jFrame = new JFrame("Milk Production");
+		jPanelMeatProduction.setStringsLanguaje("NOMBRE DEL BOVINO: ", "RAZA DEL BOVINO: ", "PESO VIVO (Kg): ", "PRODUCCION DE CARNE", "TOTAL DE CARNE PRODUCIDA (Kg): ", "CAMBIAR DE BOVINO", "REGRESAR");
+		JFrame jFrame = new JFrame("Meat Production");
 		jFrame.setVisible(true);
 		jFrame.setSize(660, 500);
 		jFrame.setLocationRelativeTo(null);;
