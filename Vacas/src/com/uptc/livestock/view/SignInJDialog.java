@@ -24,11 +24,14 @@ import java.awt.GridLayout;
 public class SignInJDialog extends JDialog {
 	private HintJTextField lastNameField;
 	private HintJTextField firstNameField;
+	private HintJTextField addressField;
+	private HintJTextField phoneField;
 	private HintJPasswordField passwordField;
 	private HintJPasswordField confirmPasswordField;
 	private JLabel showingLabel;
 	private JButton signInButton;
 	private JButton logInButton;
+	private JPanel contentPanel;
 
 	public SignInJDialog() {
 		LivestockListener.getIntance().setSignInJDialog(this);
@@ -36,18 +39,12 @@ public class SignInJDialog extends JDialog {
 	}
 
 	private void init() {
-		setBounds(100, 100, 450, 450);
-
-		JPanel contentPanel = new JPanel();
+		setBounds(100, 100, 600, 350);
 
 		getContentPane().setBackground(new Color(100, 149, 237));
 
 		contentPanel = new JPanel();
 		contentPanel.setOpaque(false);
-
-		lastNameField = new HintJTextField();
-		lastNameField.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lastNameField.setHorizontalAlignment(SwingConstants.CENTER);
 
 		passwordField = new HintJPasswordField();
 		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -56,8 +53,9 @@ public class SignInJDialog extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		GridBagLayout gb_contentpanel = new GridBagLayout();
-		gb_contentpanel.rowHeights = new int[] { 37, 50, 50, 50, 50, 34 };
-		gb_contentpanel.columnWidths = new int[] { 209 };
+		gb_contentpanel.columnWeights = new double[] { 0.0, 0.0 };
+		gb_contentpanel.rowHeights = new int[] { 37, 50, 50, 50, 34 };
+		gb_contentpanel.columnWidths = new int[] { 245, 215 };
 		contentPanel.setLayout(gb_contentpanel);
 
 		showingLabel = new JLabel();
@@ -65,7 +63,8 @@ public class SignInJDialog extends JDialog {
 		showingLabel.setFont(new Font("Arial", Font.PLAIN, 20));
 
 		GridBagConstraints gbc_showingLabel = new GridBagConstraints();
-		gbc_showingLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_showingLabel.gridwidth = 2;
+		gbc_showingLabel.insets = new Insets(0, 0, 5, 0);
 		gbc_showingLabel.gridx = 0;
 		gbc_showingLabel.gridy = 0;
 		contentPanel.add(showingLabel, gbc_showingLabel);
@@ -80,12 +79,36 @@ public class SignInJDialog extends JDialog {
 		gbc_lastNameField.gridy = 1;
 		contentPanel.add(firstNameField, gbc_lastNameField);
 
+		lastNameField = new HintJTextField();
+		lastNameField.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lastNameField.setHorizontalAlignment(SwingConstants.CENTER);
+
 		GridBagConstraints gbc_usernameField = new GridBagConstraints();
-		gbc_usernameField.insets = new Insets(0, 0, 5, 5);
+		gbc_usernameField.insets = new Insets(0, 0, 5, 0);
 		gbc_usernameField.fill = GridBagConstraints.BOTH;
-		gbc_usernameField.gridx = 0;
-		gbc_usernameField.gridy = 2;
+		gbc_usernameField.gridx = 1;
+		gbc_usernameField.gridy = 1;
 		contentPanel.add(lastNameField, gbc_usernameField);
+
+		addressField = new HintJTextField();
+		addressField.setHorizontalAlignment(SwingConstants.CENTER);
+		addressField.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		GridBagConstraints gbc_addressField = new GridBagConstraints();
+		gbc_addressField.insets = new Insets(0, 0, 5, 5);
+		gbc_addressField.fill = GridBagConstraints.BOTH;
+		gbc_addressField.gridx = 0;
+		gbc_addressField.gridy = 2;
+		contentPanel.add(addressField, gbc_addressField);
+
+		phoneField = new HintJTextField();
+		phoneField.setHorizontalAlignment(SwingConstants.CENTER);
+		phoneField.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		GridBagConstraints gbc_phoneField = new GridBagConstraints();
+		gbc_phoneField.insets = new Insets(0, 0, 5, 0);
+		gbc_phoneField.fill = GridBagConstraints.BOTH;
+		gbc_phoneField.gridx = 1;
+		gbc_phoneField.gridy = 2;
+		contentPanel.add(phoneField, gbc_phoneField);
 
 		GridBagConstraints gbc_passwordField = new GridBagConstraints();
 		gbc_passwordField.insets = new Insets(0, 0, 5, 5);
@@ -103,9 +126,9 @@ public class SignInJDialog extends JDialog {
 		confirmPasswordField.setHorizontalAlignment(SwingConstants.CENTER);
 		GridBagConstraints gbc_confirmPasswordField = new GridBagConstraints();
 		gbc_confirmPasswordField.fill = GridBagConstraints.BOTH;
-		gbc_confirmPasswordField.insets = new Insets(0, 0, 5, 5);
-		gbc_confirmPasswordField.gridx = 0;
-		gbc_confirmPasswordField.gridy = 4;
+		gbc_confirmPasswordField.insets = new Insets(0, 0, 5, 0);
+		gbc_confirmPasswordField.gridx = 1;
+		gbc_confirmPasswordField.gridy = 3;
 		contentPanel.add(confirmPasswordField, gbc_confirmPasswordField);
 		signInButton.setActionCommand(Command.SIGNIN_ACCOUNT.toString());
 		signInButton.setBorderPainted(false);
@@ -113,10 +136,10 @@ public class SignInJDialog extends JDialog {
 		signInButton.setBackground(Color.WHITE);
 
 		GridBagConstraints gbc_loginButton = new GridBagConstraints();
-		gbc_loginButton.insets = new Insets(0, 0, 0, 5);
-		gbc_loginButton.fill = GridBagConstraints.BOTH;
+		gbc_loginButton.gridwidth = 2;
+		gbc_loginButton.fill = GridBagConstraints.VERTICAL;
 		gbc_loginButton.gridx = 0;
-		gbc_loginButton.gridy = 5;
+		gbc_loginButton.gridy = 4;
 		contentPanel.add(signInButton, gbc_loginButton);
 
 		getContentPane().add(contentPanel);
@@ -158,10 +181,13 @@ public class SignInJDialog extends JDialog {
 		return new String[] { firstNameField.getText(), lastNameField.getText(), passwordField.getText() };
 	}
 
-	public void setStringsLanguage(String firstNameHint, String lastNameHint, String passwordHint,
-			String confirmPasswordHint, String showingTitle, String loginButton, String signinButton) {
+	public void setStringsLanguage(String firstNameHint, String lastNameHint, String addressHint, String phoneHint,
+			String passwordHint, String confirmPasswordHint, String showingTitle, String loginButton,
+			String signinButton) {
 		this.firstNameField.setHint(firstNameHint);
 		this.lastNameField.setHint(lastNameHint);
+		this.addressField.setHint(addressHint);
+		this.phoneField.setHint(phoneHint);
 		this.passwordField.setHint(passwordHint);
 		this.confirmPasswordField.setHint(confirmPasswordHint);
 		this.showingLabel.setText(showingTitle);

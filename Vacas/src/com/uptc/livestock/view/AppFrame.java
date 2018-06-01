@@ -41,8 +41,11 @@ public class AppFrame extends JFrame {
 				properties.getProperty("menu_about"), properties.getProperty("menu_contact"),
 				properties.getProperty("menu_language"), properties.getProperty("spanish"),
 				properties.getProperty("english"), properties.getProperty("deutsch"));
-		this.signInJDialog.setStringsLanguage(properties.getProperty("signin_firstname"), 
+		this.signInJDialog.setStringsLanguage(
+				properties.getProperty("signin_firstname"), 
 				properties.getProperty("signin_lastname"),
+				properties.getProperty("signin_address"),
+				properties.getProperty("signin_phone"),
 				properties.getProperty("login_password"), 
 				properties.getProperty("login_password"), 
 				properties.getProperty("signin_showing_title"), 
