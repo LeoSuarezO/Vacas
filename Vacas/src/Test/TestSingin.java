@@ -16,7 +16,5 @@ public class TestSingin {
 				"Ingresar", 
 				"Crear");
 		sd.setVisible(true);
-		
-		sd.getUserData();
 	}
 }
