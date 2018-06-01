@@ -18,8 +18,6 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.Color;
