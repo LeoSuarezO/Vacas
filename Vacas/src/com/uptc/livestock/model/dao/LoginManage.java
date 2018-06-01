@@ -9,19 +9,18 @@ import com.uptc.livestock.model.entity.HashSalt;
 import com.uptc.livestock.utilities.PasswordUtil;
 
 public class LoginManage {
-	private Map<String, HashSalt> userNamePassword;
+	private static Map<String, HashSalt> userNamePassword = new HashMap<>();
 
 	public LoginManage() {
-		userNamePassword = new HashMap<>();
 	}
 
-	public String generateUsername(String userFirstName, String userLastName, HashSalt hashSalt) {
+	public static String generateUsername(String userFirstName, String userLastName, HashSalt hashSalt) {
 		String username = useName(userFirstName, userLastName);
 		userNamePassword.put(username, hashSalt);
 		return username;
 	}
 
-	public String useName(String userFirstName, String userLastName) {
+	public static String useName(String userFirstName, String userLastName) {
 		String username = buildUsername(userFirstName, userLastName);
 		int counter = 1;
 		while (userNamePassword.keySet().contains(username)) {
@@ -42,7 +41,7 @@ public class LoginManage {
 		return false;
 	}
 
-	private String buildUsername(String userFirstName, String userLastName) {
+	private static String buildUsername(String userFirstName, String userLastName) {
 		return (userFirstName + '.' + userLastName).toLowerCase();
 	}
 }
