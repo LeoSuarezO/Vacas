@@ -7,13 +7,15 @@ public class Rancher {
 	private String lastName;
 	private String address;
 	private int phoneNumber;
+	private String username;
 	
-	public Rancher(short id, String name, String lastName, String address, int phoneNumber) {
+	public Rancher(short id, String name, String lastName, String address, int phoneNumber, String username) {
 		this.id = id;
 		this.name = name;
 		this.lastName = lastName;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
+		this.username = username;
 	}
 
 	public short getId() {
@@ -54,5 +56,9 @@ public class Rancher {
 
 	public void setPhoneNumber(int phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+	
+	public String getUsername() {
+		return username;
 	}
 }
