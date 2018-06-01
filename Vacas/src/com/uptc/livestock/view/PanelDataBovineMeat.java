@@ -12,7 +12,6 @@ public class PanelDataBovineMeat extends JPanel{
 	private JLabel raceBovine;
 	private JLabel liveWeight;
 	private JLabel deathWeight;
-//	private JLabel labelTotalMeat;
 	
 	public PanelDataBovineMeat() {
 		super();
@@ -20,7 +19,6 @@ public class PanelDataBovineMeat extends JPanel{
 		this.raceBovine = new JLabel("RAZA: Brahman");
 		this.liveWeight = new JLabel("PESO VIVO: 120");
 		this.deathWeight = new JLabel("PESO MUERTO: 75");
-//		this.labelTotalMeat = new JLabel();
 		init();
 	}
 
@@ -34,7 +32,6 @@ public class PanelDataBovineMeat extends JPanel{
 		this.add(raceBovine);
 		this.add(liveWeight);
 		this.add(deathWeight);
-//		this.add(la);
 	}
 
 }

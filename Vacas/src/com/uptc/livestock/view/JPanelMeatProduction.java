@@ -18,7 +18,7 @@ public class JPanelMeatProduction extends JPanel{
 	private JLabel labelTotalMeat;
 	private JLabel imageBovine;
 	private JButton changeBovine;
-	private JButton exit;;
+	private JButton exit;
 	
 	
 	public JPanelMeatProduction() {

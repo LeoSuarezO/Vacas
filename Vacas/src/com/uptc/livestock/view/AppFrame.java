@@ -22,8 +22,6 @@ public class AppFrame extends JFrame {
 		LivestockListener.getIntance().setAppFrame(this);
 		this.setLanguage(Language.ESPANIOL);
 
-		logInJDialog.setVisible(true);
-
 		setJMenuBar(appJMenuBar);
 
 		this.setSize(640, 480);
