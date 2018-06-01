@@ -15,13 +15,14 @@ public class AppFrame extends JFrame {
 		this.signInJDialog = new SignInJDialog();
 		this.logInJDialog = new LogInJDialog();
 		this.appJMenuBar = new AppJMenuBar();
+		
 		this.init();
 	}
 
 	private void init() {
 		LivestockListener.getIntance().setAppFrame(this);
 		this.setLanguage(Language.ESPANIOL);
-
+		
 		setJMenuBar(appJMenuBar);
 
 		this.setSize(640, 480);
