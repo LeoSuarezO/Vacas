@@ -9,7 +9,7 @@ import com.uptc.livestock.view.LogInJDialog;
 import com.uptc.livestock.view.SignInJDialog;
 
 public class LivestockListener implements ActionListener {
-	private static LivestockListener livestockListener;
+	private static LivestockListener livestockListener=null;
 	
 	private SignInJDialog signInJDialog;
 	private LogInJDialog logInJDialog;
@@ -35,6 +35,9 @@ public class LivestockListener implements ActionListener {
 		case SIGNIN_LOGIN:
 			logInJDialog.setVisible(true);
 			signInJDialog.dispose();
+			break;
+		case SIGNIN_ACCOUNT:
+
 			break;
 		case SPANISH:
 			appFrame.setLanguage(Language.ESPANIOL);
