@@ -50,5 +50,9 @@ public class MyDate{
 	public static int getCurrentYear(){
 		return toDate.get(Calendar.YEAR);
 	}
+		
+	public static int passToDays(MyDate myDate) {
+		return ((getCurrentYear() - myDate.year)*365) + ((getCurrentMonth()-myDate.month)*30) +(getCurrentDay()-myDate.day);
+	}
 	
 }

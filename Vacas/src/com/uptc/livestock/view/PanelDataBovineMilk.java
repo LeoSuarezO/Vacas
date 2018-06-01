@@ -12,13 +12,15 @@ public class PanelDataBovineMilk extends JPanel{
 	private JLabel raceBovine;
 	private JLabel numberBirths;
 	private JLabel dataLastBirth;
+	private CowGUI cowGUI;
 	
-	public PanelDataBovineMilk() {
+	public PanelDataBovineMilk(CowGUI cowGUI) {
 		super();
-		this.nameBovine = new JLabel("NOMBRE: Gardenia");
-		this.raceBovine = new JLabel("RAZA: Holstein");
-		this.numberBirths = new JLabel("NUMERO DE PARTOS: 3");
-		this.dataLastBirth = new JLabel("FECHA DEL ULTIMO PARTO: 23/02/2018");
+		this.cowGUI = cowGUI;
+		this.nameBovine = new JLabel();
+		this.raceBovine = new JLabel();
+		this.numberBirths = new JLabel();
+		this.dataLastBirth = new JLabel();
 		init();
 	}
 
@@ -32,7 +34,13 @@ public class PanelDataBovineMilk extends JPanel{
 		this.add(raceBovine);
 		this.add(numberBirths);
 		this.add(dataLastBirth);
-		
+	}
+	
+	public void setStringsLanguaje(String nameBovine, String raceBovine, String numberBirths, String dataLastBirth) {
+		this.nameBovine.setText(nameBovine +this.cowGUI.getName());
+		this.raceBovine.setText(raceBovine +cowGUI.getRace());
+		this.numberBirths.setText(numberBirths +cowGUI.getNumParts());
+		this.dataLastBirth.setText(dataLastBirth +cowGUI.getMessageAnyDate(cowGUI.getDatePart()));
 	}
 
 }

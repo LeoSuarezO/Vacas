@@ -21,11 +21,11 @@ public class JPanelMeatProduction extends JPanel{
 	private JButton exit;
 	
 	
-	public JPanelMeatProduction() {
+	public JPanelMeatProduction(CowGUI cowGUI) {
 		super();
 		this.title = new JLabel();
 		this.labelTotalMeat = new JLabel();
-		this.panelDataBovineMeat = new PanelDataBovineMeat();
+		this.panelDataBovineMeat = new PanelDataBovineMeat(cowGUI);
 		this.imageBovine = new JLabel();
 		this.changeBovine = new JButton("CAMBIAR DE BOBINO");
 		this.exit = new JButton("REGRESAR");
@@ -88,5 +88,13 @@ public class JPanelMeatProduction extends JPanel{
 		grConstraints.weightx = 0;
 		grConstraints.weighty = 0;
 		this.add(imageBovine, grConstraints);		
+	}
+	
+	public void setStringsLanguaje(String nameBovine, String raceBovine, String liveWeight, String deathWeight, String title, String totalMeat, String buttonChange, String buttonExit) {
+		this.panelDataBovineMeat.setStringsLanguaje(nameBovine, raceBovine, liveWeight, deathWeight);
+		this.title.setText(title);
+		this.labelTotalMeat.setText(totalMeat);
+		this.changeBovine.setText(buttonChange);
+		this.exit.setText(buttonExit);
 	}
 }

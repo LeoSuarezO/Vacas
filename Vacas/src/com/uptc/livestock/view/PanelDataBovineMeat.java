@@ -12,9 +12,11 @@ public class PanelDataBovineMeat extends JPanel{
 	private JLabel raceBovine;
 	private JLabel liveWeight;
 	private JLabel deathWeight;
+	private CowGUI cowGUI;
 	
-	public PanelDataBovineMeat() {
+	public PanelDataBovineMeat(CowGUI cowGUI) {
 		super();
+		this.cowGUI = cowGUI;
 		this.nameBovine = new JLabel("NOMBRE: Lola");
 		this.raceBovine = new JLabel("RAZA: Brahman");
 		this.liveWeight = new JLabel("PESO VIVO: 120");
@@ -32,6 +34,13 @@ public class PanelDataBovineMeat extends JPanel{
 		this.add(raceBovine);
 		this.add(liveWeight);
 		this.add(deathWeight);
+	}
+	
+	public void setStringsLanguaje(String nameBovine, String raceBovine, String liveWeight, String deathWeight) {
+		this.nameBovine.setText(nameBovine +this.cowGUI.getName());
+		this.raceBovine.setText(raceBovine +cowGUI.getRace());
+		this.liveWeight.setText(liveWeight +cowGUI.getWeight());
+		this.deathWeight.setText(deathWeight);
 	}
 
 }

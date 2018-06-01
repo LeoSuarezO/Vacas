@@ -2,127 +2,135 @@ package com.uptc.livestock.model.entity;
 
 public class Cow extends Bovine {
 
-	private double cantMilkProduce;
+	private double expectedMilkProduction;
+//	private double realMilkProduction;
 	private MyDate dateBirths;
 	private int numberBirths;
-	private MyDate dateDryPeriod;
+	private short daysDryPeriod;
 	
 
-	public Cow(Bovine bovine, MyDate datePart, int numberBirths, MyDate dateDryPeriod) {
+	public Cow(Bovine bovine, MyDate datePart, int numberBirths, short daysDryPeriod) {
 		super(bovine.getId(), bovine.getName(), bovine.getBirthDate(), bovine.getRace(), bovine.getWeight(), bovine.getVaccine(), bovine.getHealthCondition());
-		this.dateDryPeriod = dateDryPeriod;
+		this.daysDryPeriod = daysDryPeriod;
 		this.dateBirths = datePart;
 		this.numberBirths = numberBirths;
 	}
 	
-	public void cantProdAge() {
-		if(this.getAge()>=2 && this.getAge()<=8) {
-			cantMilkProduce+= (cantMilkProduce*0.25);
-		}else if(this.getAge()>=8) {
-			cantMilkProduce -= (cantMilkProduce*0.10);
+	//Factores que determinan la produccion de leche 
+	
+	private  void cantProdAge() {
+		if(this.getAge()>=2 && this.getAge()<=8) { //Vacas maduras
+			expectedMilkProduction+= (expectedMilkProduction*0.25);
+		}else if(this.getAge()>=8) { //Vacas para matadero
+			expectedMilkProduction -= (expectedMilkProduction*0.10);
 		}
 	}
 	
-	public void cantProdParts() {
-		if(true) ;
-	}
-	
-	/**
-	 * Obtiene la diferencia entre el mes actual y el mes de parto de la cria
-	 */
-	private short getMonthDiferences() {
-		return (short) (MyDate.getCurrentMonth()-dateBirths.getMonth());
-	}
 	
 	/**
 	 * disminuye la cantidad de produccion a medida que aumenta el tiempo desde el mes del parto
 	 */
 	
-	public void breastFeedingPeriod() {
-		int i=1;
-		double percent = 0.008;
-		while(i!=getMonthDiferences()) {
-			percent*=2;
+	private void breastFeedingPeriod() {
+		int i=0;
+		double percent = 0.0002;
+		while(i<=MyDate.passToDays(this.dateBirths)) {
+			percent+=0.0002;
+			if((i%30)==0) {
+				percent*=2;
+			}
 			i++;
 		}
-		cantMilkProduce -= (cantMilkProduce*percent);
+		expectedMilkProduction -= (expectedMilkProduction*percent);
+		System.out.println(percent);
 	}
 	
-	public void getnumberBirths() {
-		if(numberBirths > 5) {
-			System.out.println("La vaca no puede dar mas leche porque el numero de partos está al tope");
+	private void cantDaysDryPeriod() {
+		if(this.daysDryPeriod>60) {
+			expectedMilkProduction -= (expectedMilkProduction*0.05);
 		}
 	}
 	
-	public void cowIsSick(){
+
+	
+	private void cowIsSick(){
 		if(this.getHealthCondition().equals(HealthCondition.SICK)) {
-			System.out.println("La leche no debería ser consumida porque la vaca está enferma");
+			expectedMilkProduction -= (expectedMilkProduction*0.10);
 		}
 	}
 
 	
-	public void productionMilkAverage() {
+	private void productionMilkAverage() {
 		switch (this.getRace()) {
 		case BLANCO_OREJINEGRO:
-			cantMilkProduce = 18;
+			expectedMilkProduction = 18;
 			break;
 		case BUFALA:
-			cantMilkProduce = 20;
+			expectedMilkProduction = 20;
 			break;
 		case NORMANDO:
-			cantMilkProduce = 14.2;
+			expectedMilkProduction = 14.2;
 			break;
 		case SIMMENTAL:
-			cantMilkProduce = 18;
+			expectedMilkProduction = 18;
 			break;
 		case JERSEY:
-			cantMilkProduce = 18;
+			expectedMilkProduction = 18;
 			break;
 		case HOLSTEIN:
-			cantMilkProduce = 25;
+			expectedMilkProduction = 25;
 			break;
 		case CEBU:
-			cantMilkProduce = 22;
+			expectedMilkProduction = 22;
 			break;
 		case CAQUETEÑO:
-			cantMilkProduce = 15;
+			expectedMilkProduction = 15;
 			break;
 		case CHINO_SANTANDEREANO:
-			cantMilkProduce = 12;
+			expectedMilkProduction = 12;
 			break;
 		case COSTEÑO_CON_CUERNOS:
-			cantMilkProduce = 17;
+			expectedMilkProduction = 17;
 			break;
 		case HARTON_DEL_VALLE:
-			cantMilkProduce = 20;
+			expectedMilkProduction = 20;
 			break;
 		case LUCERNA:
-			cantMilkProduce = 20;
+			expectedMilkProduction = 20;
 			break;
 		case SANMARTINERO:
-			cantMilkProduce = 15;
+			expectedMilkProduction = 15;
 			break;
 		case VELAZQUEZ:
-			cantMilkProduce = 7.5;
+			expectedMilkProduction = 7.5;
 			break;
 		case GYR:
-			cantMilkProduce = 32;
+			expectedMilkProduction = 32;
 			break;
 		default:
-			cantMilkProduce = 15;
+			expectedMilkProduction = 15;
 			break;
 		}
+	}
+	
+	public String getMessageAnyDate(MyDate myDate) {
+		return myDate.getDay() +"/" +myDate.getMonth() +"/" +myDate.getYear();
 	}
 	
 	
 	//Getters y Setters
 	
 	public double getCantMilkProduce() {
-		return cantMilkProduce;
+		productionMilkAverage();
+		breastFeedingPeriod();
+		cantProdAge();
+		cowIsSick();
+		cantDaysDryPeriod();
+		return expectedMilkProduction;
 	}
 	
 	public void setCantMilkProduce(double cantMilkProduce) {
-		this.cantMilkProduce = cantMilkProduce;
+		this.expectedMilkProduction = cantMilkProduce;
 	}
 
 	public MyDate getDatePart() {
@@ -133,12 +141,12 @@ public class Cow extends Bovine {
 		this.dateBirths = datePart;
 	}
 
-	public MyDate getDateDryPeriod() {
-		return dateDryPeriod;
+	public short getDateDryPeriod() {
+		return daysDryPeriod;
 	}
 
-	public void setDateDryPeriod(MyDate dateDryPeriod) {
-		this.dateDryPeriod = dateDryPeriod;
+	public void setDateDryPeriod(short daysDryPeriod) {
+		this.daysDryPeriod = daysDryPeriod;
 	}
 
 	public int getNumParts() {
