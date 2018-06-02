@@ -13,6 +13,7 @@ public class LanguageListener implements ItemListener{
 	
 	@Override
 	public void itemStateChanged(ItemEvent e) {
+		if(e.getStateChange() == ItemEvent.SELECTED)
 		switch(Language.valueOf(Language.valueOfString(e.getItem().toString()).toString())) {
 		case ESPANIOL:
 			ChangeLanguage.getInstance().setLanguage(Language.ESPANIOL);

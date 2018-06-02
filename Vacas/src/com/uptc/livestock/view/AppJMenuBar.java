@@ -36,7 +36,6 @@ public class AppJMenuBar extends JMenuBar {
 	}
 
 	private void init() {
-		ChangeLanguage.getInstance().setAppJMenuBar(this);
 		spanishItem.addActionListener(LivestockListener.getIntance());
 		englishItem.addActionListener(LivestockListener.getIntance());
 		deutschItem.addActionListener(LivestockListener.getIntance());
@@ -56,6 +55,8 @@ public class AppJMenuBar extends JMenuBar {
 
 		add(optionsMenu);
 		add(helpMenu);
+		
+		ChangeLanguage.getInstance().setAppJMenuBar(this);
 	}
 
 	public void setStringsLanguage(String options, String help, String about, String contact, String language, String spanish, String english, String deutsch) {

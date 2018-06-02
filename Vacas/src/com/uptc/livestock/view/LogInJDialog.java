@@ -140,6 +140,7 @@ public class LogInJDialog extends JDialog {
 		optionPanel.add(signInButton);
 		optionPanel.add(forgetPasswordButton);
 
+		setModal(true);
 		setLocationRelativeTo(null);
 		setUndecorated(true);
 	}
@@ -156,5 +157,10 @@ public class LogInJDialog extends JDialog {
 		this.logInButton.setText(loginButton);
 		this.signInButton.setText(signinButton);
 		this.forgetPasswordButton.setText(forgetPasswordButton);
+	}
+	
+	public void resetFields() {
+		this.usernameField.putHint();
+		this.passwordField.putHint();
 	}
 }

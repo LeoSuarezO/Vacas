@@ -17,10 +17,13 @@ public class AppFrame extends JFrame {
 	}
 
 	private void init() {
-		ChangeLanguage.getInstance().setAppFrame(this);
 		ChangeLanguage.getInstance().setLanguage(Language.ESPANIOL);
-		setJMenuBar(appJMenuBar);
 
+		add(presentationJPanel);
+
+		ChangeLanguage.getInstance().setAppFrame(this);
+	
+//		this.setUndecorated(true);
 		this.setSize(640, 480);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);

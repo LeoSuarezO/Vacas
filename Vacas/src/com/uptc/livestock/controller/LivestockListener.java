@@ -22,17 +22,21 @@ public class LivestockListener implements ActionListener {
 			switch (Command.valueOf(e.getActionCommand())) {
 			case DISPOSE_LOGIN_JDIALOG:
 				logInJDialog.dispose();
+				logInJDialog.resetFields();
 				break;
 			case DISPOSE_SIGNIN_JDIALOG:
 				signInJDialog.dispose();
+				signInJDialog.resetFields();
 				break;
 			case CREATE_ACCOUNT:
 				logInJDialog.dispose();
+				logInJDialog.resetFields();
 				signInJDialog.setVisible(true);
 				break;
 			case SIGNIN_LOGIN:
-				logInJDialog.setVisible(true);
 				signInJDialog.dispose();
+				signInJDialog.resetFields();
+				logInJDialog.setVisible(true);
 				break;
 			case SIGNIN_ACCOUNT:
 

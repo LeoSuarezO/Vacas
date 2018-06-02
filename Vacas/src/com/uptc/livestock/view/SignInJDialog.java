@@ -210,6 +210,7 @@ public class SignInJDialog extends JDialog {
 		
 		optionPanel.add(logInButton);
 
+		setModal(true);
 		setLocationRelativeTo(null);
 		setUndecorated(true);
 	}
@@ -232,5 +233,13 @@ public class SignInJDialog extends JDialog {
 		this.logInButton.setText(loginButton);
 		this.signInButton.setText(signinButton);
 	}
-
+	
+	public void resetFields() {
+		this.firstNameField.putHint();
+		this.lastNameField.putHint();
+		this.addressField.putHint();
+		this.phoneField.putHint();
+		this.passwordField.putHint();
+		this.confirmPasswordField.putHint();
+	}
 }
