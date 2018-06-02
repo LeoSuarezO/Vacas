@@ -66,7 +66,7 @@ public class PresentationJPanel extends JPanel{
 		southPanel.setBackground(Color.WHITE);
 		add(southPanel, BorderLayout.SOUTH);
 		
-		JComboBox comboBox = new JComboBox();
+		JComboBox<String> comboBox = new JComboBox<>(Language.DEFAULT.getLanguageList(Language.ESPANIOL));
 		southPanel.add(comboBox);
 		
 		JButton btnAcercaDe = new JButton("Acerca de");
