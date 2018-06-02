@@ -7,6 +7,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.uptc.livestock.controller.ChangeLanguage;
 import com.uptc.livestock.controller.Command;
 import com.uptc.livestock.controller.LivestockListener;
 import com.uptc.livestock.controller.PasswordListener;
@@ -44,6 +45,7 @@ public class SignInJDialog extends JDialog {
 	}
 
 	private void init() {
+		ChangeLanguage.getInstance().setSignInJDialog(this);
 		setBounds(100, 100, 600, 350);
 
 		getContentPane().setBackground(new Color(100, 149, 237));

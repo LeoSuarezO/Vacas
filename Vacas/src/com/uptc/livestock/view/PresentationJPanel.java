@@ -1,6 +1,10 @@
 package com.uptc.livestock.view;
 
 import javax.swing.JPanel;
+
+import com.uptc.livestock.controller.ChangeLanguage;
+import com.uptc.livestock.controller.LanguageListener;
+
 import java.awt.Color;
 import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
@@ -13,11 +17,18 @@ import java.awt.Insets;
 import java.awt.FlowLayout;
 
 public class PresentationJPanel extends JPanel{
+	
+	private JLabel titleLabel;
+	private JButton signinButton;
+	private JButton loginButton;
+	private JButton aboutButton;
+
 	public PresentationJPanel() {
 		init();
 	}
 	
 	private void init() {
+		ChangeLanguage.getInstance().setPresentationJPanel(this);
 		setBackground(new Color(255, 99, 71));
 		setLayout(new BorderLayout());
 		
@@ -29,7 +40,7 @@ public class PresentationJPanel extends JPanel{
 		gbl_centerPanel.columnWidths = new int[]{150, 40, 150};
 		centerPanel.setLayout(gbl_centerPanel);
 		
-		JLabel titleLabel = new JLabel("Ganado");
+		titleLabel = new JLabel();
 		titleLabel.setFont(new Font("Constantia", Font.PLAIN, 50));
 		titleLabel.setForeground(Color.WHITE);
 		GridBagConstraints gbc_lblTitulo = new GridBagConstraints();
@@ -39,7 +50,7 @@ public class PresentationJPanel extends JPanel{
 		gbc_lblTitulo.gridy = 0;
 		centerPanel.add(titleLabel, gbc_lblTitulo);
 		
-		JButton signinButton = new JButton("Crear cuenta");
+		signinButton = new JButton();
 		signinButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		signinButton.setBackground(Color.WHITE);
 		signinButton.setForeground(new Color(255, 99, 71));
@@ -50,7 +61,7 @@ public class PresentationJPanel extends JPanel{
 		gbc_btnNewButton.gridy = 2;
 		centerPanel.add(signinButton, gbc_btnNewButton);
 		
-		JButton loginButton = new JButton("Iniciar sesión");
+		loginButton = new JButton();
 		loginButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		loginButton.setBackground(Color.WHITE);
 		loginButton.setForeground(new Color(255, 99, 71));
@@ -66,11 +77,18 @@ public class PresentationJPanel extends JPanel{
 		southPanel.setBackground(Color.WHITE);
 		add(southPanel, BorderLayout.SOUTH);
 		
-		JComboBox<String> comboBox = new JComboBox<>(Language.DEFAULT.getLanguageList(Language.ESPANIOL));
+		JComboBox<String> comboBox = new JComboBox<>(Language.getLanguageList(Language.ESPANIOL));
+		comboBox.addItemListener(LanguageListener.getInstance());
 		southPanel.add(comboBox);
 		
-		JButton btnAcercaDe = new JButton("Acerca de");
-		southPanel.add(btnAcercaDe);
+		aboutButton = new JButton();
+		southPanel.add(aboutButton);
 	}
 	
+	public void setStringsLanguage(String title, String createAccount, String logIn, String about) {
+		this.titleLabel.setText(title);
+		this.signinButton.setText(createAccount);
+		this.loginButton.setText(logIn);
+		this.aboutButton.setText(about);
+	}
 }

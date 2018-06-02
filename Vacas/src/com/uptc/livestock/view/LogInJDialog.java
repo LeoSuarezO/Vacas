@@ -7,6 +7,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.uptc.livestock.controller.ChangeLanguage;
 import com.uptc.livestock.controller.Command;
 import com.uptc.livestock.controller.LivestockListener;
 
@@ -35,6 +36,7 @@ public class LogInJDialog extends JDialog {
 	}
 
 	private void init() {
+		ChangeLanguage.getInstance().setLogInJDialog(this);
 		setBounds(100, 100, 450, 300);
 
 		JPanel contentPanel = new JPanel();

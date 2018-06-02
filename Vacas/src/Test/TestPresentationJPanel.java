@@ -2,6 +2,8 @@ package Test;
 
 import javax.swing.JFrame;
 
+import com.uptc.livestock.controller.ChangeLanguage;
+import com.uptc.livestock.view.Language;
 import com.uptc.livestock.view.PresentationJPanel;
 
 public class TestPresentationJPanel {
@@ -12,6 +14,7 @@ public class TestPresentationJPanel {
 		f.setLocationRelativeTo(null);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(640, 480);
+		ChangeLanguage.getInstance().setLanguage(Language.ESPANIOL);
 		f.setVisible(true);
 	}
 }
