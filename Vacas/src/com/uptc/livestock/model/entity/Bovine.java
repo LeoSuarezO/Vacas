@@ -15,6 +15,7 @@ public class Bovine {
 	private short id;
 	private String name;
 	private MyDate birthDate;
+	protected boolean isCow;
 	private Race race;
 	private double weight;
 	private String vaccine;

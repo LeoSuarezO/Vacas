@@ -3,7 +3,6 @@ package com.uptc.livestock.model.entity;
 public class Cow extends Bovine {
 
 	private double expectedMilkProduction;
-//	private double realMilkProduction;
 	private MyDate dateBirths;
 	private int numberBirths;
 	private short daysDryPeriod;
@@ -14,6 +13,7 @@ public class Cow extends Bovine {
 		this.daysDryPeriod = daysDryPeriod;
 		this.dateBirths = datePart;
 		this.numberBirths = numberBirths;
+		this.isCow = true;
 	}
 	
 	//Factores que determinan la produccion de leche 
