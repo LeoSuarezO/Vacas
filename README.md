@@ -1,2 +1,4 @@
-# livestock
-NO SE DEBEN SUBIR ARCHIVOS .class
+# LiveStock
+##Participantes
+Andrés Felipe Chaparro Rosas
+Fabián Alejandro Cristancho
