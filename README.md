@@ -1,4 +1,4 @@
 # LiveStock
-##Participantes
+## Participantes
 Andrés Felipe Chaparro Rosas
 Fabián Alejandro Cristancho
