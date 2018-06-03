@@ -88,7 +88,7 @@ public class PresentationJPanel extends JPanel {
 		add(southPanel, BorderLayout.SOUTH);
 
 		ChangeLanguage.getInstance().setLanguage(Language.ESPANIOL);
-		comboBox = new JComboBox<>();
+		comboBox = new JComboBox<>(ChangeLanguage.getInstance().getLanguageList());
 		this.comboBox.addItemListener(LanguageListener.getInstance());
 		southPanel.add(comboBox);
 		

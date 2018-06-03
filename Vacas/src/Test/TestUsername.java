@@ -31,7 +31,7 @@ public class TestUsername {
 					System.out.println("Las contraseñas no coinciden");
 			} while (!password.equals(password2));
 			System.out.println("Contraseña admitida");
-			ranchers.add(new Rancher((short) 0, name, lastname, "ss", 00, LoginManage.useName(name, lastname)));
+			ranchers.add(new Rancher(name, lastname, "ss", 00, LoginManage.useName(name, lastname)));
 			LoginManage.generateUsername(name, lastname, PasswordUtil.getHash(password));
 
 			System.out.print("salir? [1]");
