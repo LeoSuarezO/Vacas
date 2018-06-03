@@ -30,7 +30,7 @@ public class LoginManage {
 		return username;
 	}
 
-	public boolean existUser(String username, String password) {
+	public static boolean existUser(String username, String password) {
 		Iterator<Entry<String, HashSalt>> it = userNamePassword.entrySet().iterator();
 		while (it.hasNext()) {
 			Entry<String, HashSalt> e = it.next();
