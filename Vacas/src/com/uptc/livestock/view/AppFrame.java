@@ -26,7 +26,7 @@ public class AppFrame extends JFrame {
 
 		ChangeLanguage.getInstance().setAppFrame(this);
 	
-//		this.setUndecorated(true);
+		this.setUndecorated(true);
 		this.setSize(640, 480);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);

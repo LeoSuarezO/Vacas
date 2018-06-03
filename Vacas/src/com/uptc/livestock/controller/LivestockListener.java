@@ -3,8 +3,6 @@ package com.uptc.livestock.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JOptionPane;
-
 import com.uptc.livestock.model.dao.LoginManage;
 import com.uptc.livestock.utilities.PasswordUtil;
 import com.uptc.livestock.view.AppFrame;
@@ -64,13 +62,12 @@ public class LivestockListener implements ActionListener {
 			case LOGIN_ACCOUNT:
 				data = logInJDialog.getUserData();
 				if (LoginManage.existUser(data[0], data[1])) {
-					JOptionPane.showMessageDialog(null, "Yes");
+					appFrame.dispose();
 					appFrame.remove(presentationJPanel);
 					appFrame.setJMenuBar(appJMenuBar);
-					appFrame.setSize(640,480);
-					appFrame.pack();
+					appFrame.setUndecorated(false);
+					appFrame.setVisible(true);
 				} else {
-					JOptionPane.showMessageDialog(null, "Nel");
 				}
 				logInJDialog.dispose();
 				logInJDialog.resetFields();

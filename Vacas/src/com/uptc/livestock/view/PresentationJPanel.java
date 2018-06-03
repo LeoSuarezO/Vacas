@@ -25,6 +25,9 @@ public class PresentationJPanel extends JPanel {
 	private JButton loginButton;
 	private JButton aboutButton;
 	private JComboBox<String> comboBox;
+	private JButton btnNewButton;
+	private JButton btnNewButton_1;
+	private JButton btnNewButton_2;
 
 	public PresentationJPanel() {
 		init();
@@ -85,7 +88,7 @@ public class PresentationJPanel extends JPanel {
 		add(southPanel, BorderLayout.SOUTH);
 
 		ChangeLanguage.getInstance().setLanguage(Language.ESPANIOL);
-		comboBox = new JComboBox<>(ChangeLanguage.getInstance().getLanguageList());
+		comboBox = new JComboBox<>();
 		this.comboBox.addItemListener(LanguageListener.getInstance());
 		southPanel.add(comboBox);
 		
@@ -95,6 +98,19 @@ public class PresentationJPanel extends JPanel {
 		southPanel.add(aboutButton);
 		
 		ChangeLanguage.getInstance().setPresentationJPanel(this);
+		
+		JPanel controlPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		controlPanel.setOpaque(false);
+		add(controlPanel, BorderLayout.NORTH);
+		
+		btnNewButton = new JButton("m");
+		controlPanel.add(btnNewButton);
+		
+		btnNewButton_1 = new JButton("M");
+		controlPanel.add(btnNewButton_1);
+		
+		btnNewButton_2 = new JButton("X");
+		controlPanel.add(btnNewButton_2);
 	}
 
 	public void setStringsLanguage(String title, String createAccount, String logIn, String about) {
