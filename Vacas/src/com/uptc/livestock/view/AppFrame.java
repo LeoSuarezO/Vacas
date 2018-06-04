@@ -9,9 +9,11 @@ public class AppFrame extends JFrame {
 	
 	private AppJMenuBar appJMenuBar;
 	private PresentationJPanel presentationJPanel;
+	private MainJPanel mainJPanel;
 	
 	public AppFrame() {
 		this.presentationJPanel= new PresentationJPanel();
+		this.mainJPanel = new MainJPanel();
 		new SignInJDialog();
 		new LogInJDialog();
 		this.appJMenuBar = new AppJMenuBar();
@@ -36,6 +38,7 @@ public class AppFrame extends JFrame {
 	public void loginProcess() {
 		dispose();
 		remove(presentationJPanel);
+		add(mainJPanel);
 		setJMenuBar(appJMenuBar);
 		setUndecorated(false);
 		setVisible(true);

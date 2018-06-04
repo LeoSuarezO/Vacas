@@ -55,4 +55,8 @@ public class Rancher {
 	public String getUsername() {
 		return username;
 	}
+	
+	public ArrayList<Herd> getHerds() {
+		return herds;
+	}
 }

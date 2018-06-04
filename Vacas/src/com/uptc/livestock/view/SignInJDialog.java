@@ -29,7 +29,7 @@ import java.awt.GridLayout;
 public class SignInJDialog extends JDialog {
 	private HintJTextField firstNameField;
 	private HintJTextField lastNameField;
-	private JLabel UsernameLabel;
+	private JLabel usernameLabel;
 	private HintJTextField addressField;
 	private HintJTextField phoneField;
 	private HintJPasswordField passwordField;
@@ -94,7 +94,7 @@ public class SignInJDialog extends JDialog {
 
 			@Override
 			public void focusLost(FocusEvent e) {
-				UsernameLabel.setText(LoginManage.useName(firstNameField.getText(), lastNameField.getText()));
+				usernameLabel.setText(LoginManage.useName(firstNameField.getText(), lastNameField.getText()));
 			}
 
 			@Override
@@ -110,16 +110,16 @@ public class SignInJDialog extends JDialog {
 		gbc_usernameField.gridy = 1;
 		contentPanel.add(lastNameField, gbc_usernameField);
 
-		UsernameLabel = new JLabel();
-		UsernameLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		UsernameLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		UsernameLabel.setForeground(Color.WHITE);
+		usernameLabel = new JLabel();
+		usernameLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		usernameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		usernameLabel.setForeground(Color.WHITE);
 		GridBagConstraints gbc_lblUsernamelabel = new GridBagConstraints();
 		gbc_lblUsernamelabel.gridwidth = 2;
 		gbc_lblUsernamelabel.insets = new Insets(0, 0, 5, 5);
 		gbc_lblUsernamelabel.gridx = 0;
 		gbc_lblUsernamelabel.gridy = 2;
-		contentPanel.add(UsernameLabel, gbc_lblUsernamelabel);
+		contentPanel.add(usernameLabel, gbc_lblUsernamelabel);
 
 		addressField = new HintJTextField();
 		addressField.setHorizontalAlignment(SwingConstants.CENTER);
@@ -237,6 +237,7 @@ public class SignInJDialog extends JDialog {
 	public void resetFields() {
 		this.firstNameField.putHint();
 		this.lastNameField.putHint();
+		this.usernameLabel.setText(null);
 		this.addressField.putHint();
 		this.phoneField.putHint();
 		this.passwordField.putHint();

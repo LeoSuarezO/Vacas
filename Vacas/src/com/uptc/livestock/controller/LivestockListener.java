@@ -9,6 +9,7 @@ import com.uptc.livestock.utilities.PasswordUtil;
 import com.uptc.livestock.view.AppFrame;
 import com.uptc.livestock.view.Language;
 import com.uptc.livestock.view.LogInJDialog;
+import com.uptc.livestock.view.MainJPanel;
 import com.uptc.livestock.view.SignInJDialog;
 
 public class LivestockListener implements ActionListener {
@@ -18,6 +19,7 @@ public class LivestockListener implements ActionListener {
 	private LogInJDialog logInJDialog;
 	
 	private AppFrame appFrame;
+	private MainJPanel mainJPanel;
 
 	private RancherDao rancherDao;
 	
@@ -113,6 +115,7 @@ public class LivestockListener implements ActionListener {
 	private void loginAccount() {
 		String[] data = logInJDialog.getUserData();
 		if (LoginManage.existUser(data[0], data[1])) {
+			mainJPanel.setRancher(rancherDao.readRancher(data[0]));
 			appFrame.loginProcess();
 		} else {
 		}
@@ -129,5 +132,9 @@ public class LivestockListener implements ActionListener {
 
 	public void setAppFrame(AppFrame appFrame) {
 		this.appFrame = appFrame;
+	}
+	
+	public void setMainJPanel(MainJPanel mainJPanel) {
+		this.mainJPanel = mainJPanel;
 	}
 }
