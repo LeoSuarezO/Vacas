@@ -6,10 +6,8 @@ import java.awt.event.ActionListener;
 import com.uptc.livestock.model.dao.LoginManage;
 import com.uptc.livestock.utilities.PasswordUtil;
 import com.uptc.livestock.view.AppFrame;
-import com.uptc.livestock.view.AppJMenuBar;
 import com.uptc.livestock.view.Language;
 import com.uptc.livestock.view.LogInJDialog;
-import com.uptc.livestock.view.PresentationJPanel;
 import com.uptc.livestock.view.SignInJDialog;
 
 public class LivestockListener implements ActionListener {
@@ -18,10 +16,7 @@ public class LivestockListener implements ActionListener {
 	private SignInJDialog signInJDialog;
 	private LogInJDialog logInJDialog;
 	
-	private PresentationJPanel presentationJPanel;
-	
 	private AppFrame appFrame;
-	private AppJMenuBar appJMenuBar;
 
 	private LivestockListener() {
 	}
@@ -31,46 +26,22 @@ public class LivestockListener implements ActionListener {
 		try {
 			switch (Command.valueOf(e.getActionCommand())) {
 			case DISPOSE_LOGIN_JDIALOG:
-				logInJDialog.dispose();
-				logInJDialog.resetFields();
+				disposeLogin();
 				break;
 			case DISPOSE_SIGNIN_JDIALOG:
-				signInJDialog.dispose();
-				signInJDialog.resetFields();
+				disposeSignin();
 				break;
 			case CREATE_ACCOUNT:
-				logInJDialog.dispose();
-				logInJDialog.resetFields();
-				signInJDialog.setVisible(true);
+				changeToSignin();
 				break;
 			case SIGNIN_LOGIN:
-				signInJDialog.dispose();
-				signInJDialog.resetFields();
-				logInJDialog.setVisible(true);
+				changeToLogin();
 				break;
 			case SIGNIN_ACCOUNT:
-				String[] data = signInJDialog.getUserData();
-				String username;
-				try {
-					username = LoginManage.generateUsername(data[0], data[1], PasswordUtil.getHash(data[4]));
-				} catch (Exception exc) {
-				}
-				signInJDialog.dispose();
-				signInJDialog.resetFields();
-				logInJDialog.setVisible(true);
+				accountCreation();
 				break;
 			case LOGIN_ACCOUNT:
-				data = logInJDialog.getUserData();
-				if (LoginManage.existUser(data[0], data[1])) {
-					appFrame.dispose();
-					appFrame.remove(presentationJPanel);
-					appFrame.setJMenuBar(appJMenuBar);
-					appFrame.setUndecorated(false);
-					appFrame.setVisible(true);
-				} else {
-				}
-				logInJDialog.dispose();
-				logInJDialog.resetFields();
+				loginAccount();
 				break;
 			default:
 				System.out.println("Este boton " + e.getActionCommand() + " no tiene funcion aun");
@@ -104,6 +75,44 @@ public class LivestockListener implements ActionListener {
 		return livestockListener;
 	}
 
+	private void disposeLogin() {
+		logInJDialog.dispose();
+		logInJDialog.resetFields();
+	}
+	
+	private void disposeSignin() {
+		signInJDialog.dispose();
+		signInJDialog.resetFields();
+	}
+	
+	private void changeToSignin() {
+		disposeLogin();
+		signInJDialog.setVisible(true);
+	}
+	
+	private void changeToLogin() {
+		disposeSignin();
+		logInJDialog.setVisible(true);
+	}
+	
+	private void accountCreation() {
+		String[] data = signInJDialog.getUserData();
+		try {
+			LoginManage.generateUsername(data[0], data[1], PasswordUtil.getHash(data[4]));
+		} catch (Exception exc) {
+		}
+		changeToLogin();
+	}
+	
+	private void loginAccount() {
+		String[] data = logInJDialog.getUserData();
+		if (LoginManage.existUser(data[0], data[1])) {
+			appFrame.loginProcess();
+		} else {
+		}
+		disposeLogin();
+	}
+	
 	public void setSignInJDialog(SignInJDialog signInJDialog) {
 		this.signInJDialog = signInJDialog;
 	}
@@ -112,15 +121,7 @@ public class LivestockListener implements ActionListener {
 		this.logInJDialog = logInJDialog;
 	}
 
-	public void setAppJMenuBar(AppJMenuBar appJMenuBar) {
-		this.appJMenuBar = appJMenuBar;
-	}
-
 	public void setAppFrame(AppFrame appFrame) {
 		this.appFrame = appFrame;
-	}
-	
-	public void setPresentationJPanel(PresentationJPanel presentationJPanel) {
-		this.presentationJPanel = presentationJPanel;
 	}
 }

@@ -34,7 +34,6 @@ public class PresentationJPanel extends JPanel {
 	}
 
 	private void init() {
-		LivestockListener.getIntance().setPresentationJPanel(this);
 		setBackground(new Color(255, 99, 71));
 		setLayout(new BorderLayout());
 

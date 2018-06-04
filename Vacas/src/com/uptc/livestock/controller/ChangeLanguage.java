@@ -25,9 +25,8 @@ public class ChangeLanguage {
 
 		languageList =new String[] { properties.getProperty("spanish"),
 				properties.getProperty("english"), properties.getProperty("deutsch")};
-		
 		if (appFrame != null)
-			this.appFrame.setTitle(properties.getProperty("title"));
+			this.appFrame.setLanguageStrings(properties.getProperty("title"));
 		if (logInJDialog != null)
 			this.logInJDialog.setStringsLanguages(properties.getProperty("login_username"),
 					properties.getProperty("login_password"), properties.getProperty("login_showing_title"),

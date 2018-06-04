@@ -6,6 +6,8 @@ import com.uptc.livestock.controller.ChangeLanguage;
 import com.uptc.livestock.controller.LivestockListener;
 
 public class AppFrame extends JFrame {
+	private String currentTitle;
+	
 	private AppJMenuBar appJMenuBar;
 	private PresentationJPanel presentationJPanel;
 	
@@ -20,7 +22,6 @@ public class AppFrame extends JFrame {
 	private void init() {
 		ChangeLanguage.getInstance().setLanguage(Language.ESPANIOL);
 		LivestockListener.getIntance().setAppFrame(this);
-		LivestockListener.getIntance().setAppJMenuBar(appJMenuBar);
 		
 		add(presentationJPanel);
 
@@ -31,5 +32,30 @@ public class AppFrame extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
+	}
+	
+	public void loginProcess() {
+		dispose();
+		remove(presentationJPanel);
+		setJMenuBar(appJMenuBar);
+		setUndecorated(false);
+		setTitle(currentTitle);
+		setVisible(true);
+	}
+	
+	public void logoutProcess() {
+		dispose();
+		setJMenuBar(null);
+		setUndecorated(true);
+		setVisible(true);
+	}
+	
+	public void setCurrentTitle(String currentTitle) {
+		this.currentTitle = currentTitle;
+	}
+	
+	public void setLanguageStrings(String title) {
+		setCurrentTitle(title);
+		setTitle(currentTitle);
 	}
 }
