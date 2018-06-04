@@ -17,9 +17,5 @@ public class MainJPanel extends JPanel{
 	
 	public void setRancher(Rancher rancher) {
 		this.rancher = rancher;
-		if(rancher.getHerds().isEmpty())
-			System.out.println("Vacio");
-		else
-			System.out.println("No vacio");
 	}
 }
