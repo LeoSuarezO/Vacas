@@ -1,6 +1,6 @@
 package com.uptc.livestock.model.entity;
 
-import java.util.ArrayList;
+import com.uptc.livestock.model.dao.HerdDao;
 
 public class Rancher {
 	
@@ -9,7 +9,7 @@ public class Rancher {
 	private String address;
 	private int phoneNumber;
 	private String username;
-	private ArrayList<Herd> herds;
+	private HerdDao herdDao;
 	
 	public Rancher(String name, String lastName, String address, int phoneNumber, String username) {
 		this.name = name;
@@ -17,7 +17,7 @@ public class Rancher {
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 		this.username = username;
-		this.herds= new ArrayList<>();
+		this.herdDao = new HerdDao();
 	}
 
 	public String getName() {
@@ -56,7 +56,7 @@ public class Rancher {
 		return username;
 	}
 	
-	public ArrayList<Herd> getHerds() {
-		return herds;
+	public HerdDao getHerds() {
+		return herdDao;
 	}
 }

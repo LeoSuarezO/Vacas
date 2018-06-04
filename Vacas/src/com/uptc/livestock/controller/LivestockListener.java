@@ -9,8 +9,8 @@ import com.uptc.livestock.utilities.PasswordUtil;
 import com.uptc.livestock.view.AppFrame;
 import com.uptc.livestock.view.Language;
 import com.uptc.livestock.view.LogInJDialog;
-import com.uptc.livestock.view.MainJPanel;
 import com.uptc.livestock.view.SignInJDialog;
+import com.uptc.livestock.view.login.MainJPanel;
 
 public class LivestockListener implements ActionListener {
 	private static LivestockListener livestockListener = null;

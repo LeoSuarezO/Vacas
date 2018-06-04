@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 
 import com.uptc.livestock.controller.ChangeLanguage;
 import com.uptc.livestock.controller.LivestockListener;
+import com.uptc.livestock.view.login.MainJPanel;
 
 public class AppFrame extends JFrame {
 	

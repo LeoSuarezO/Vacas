@@ -1,11 +1,15 @@
 package com.uptc.livestock.model.entity;
 
-import java.util.ArrayList;
+import com.uptc.livestock.model.dao.BovineDao;
 
 public class Herd {
-	private ArrayList<Bovine> bovines;
-
+	private BovineDao bovineDao;
+	
 	public Herd() {
-		bovines = new ArrayList<>();
+		this.bovineDao = new BovineDao();
+	}
+	
+	public BovineDao getBovines() {
+		return bovineDao;
 	}
 }
