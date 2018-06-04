@@ -10,6 +10,9 @@ import com.uptc.livestock.view.SignInJDialog;
 
 public class ChangeLanguage {
 	private static ChangeLanguage changeLanguage = null;
+	
+	private MyProperties properties;
+	
 	private AppFrame appFrame;
 	private SignInJDialog signInJDialog;
 	private LogInJDialog logInJDialog;
@@ -21,12 +24,11 @@ public class ChangeLanguage {
 	}
 
 	public void setLanguage(Language language) {
-		MyProperties properties = new MyProperties(language);
+		properties = new MyProperties(language);
 
 		languageList =new String[] { properties.getProperty("spanish"),
 				properties.getProperty("english"), properties.getProperty("deutsch")};
-		if (appFrame != null)
-			this.appFrame.setLanguageStrings(properties.getProperty("title"));
+		updateAppFrameLanguage();
 		if (logInJDialog != null)
 			this.logInJDialog.setStringsLanguages(properties.getProperty("login_username"),
 					properties.getProperty("login_password"), properties.getProperty("login_showing_title"),
@@ -48,6 +50,11 @@ public class ChangeLanguage {
 			this.presentationJPanel.setStringsLanguage(properties.getProperty("title"),
 					properties.getProperty("login_signin"), properties.getProperty("login_button"),
 					properties.getProperty("menu_about"));
+	}
+	
+	public void updateAppFrameLanguage() {
+		if (appFrame != null)
+			this.appFrame.setTitle(properties.getProperty("title"));
 	}
 
 	public String[] getLanguageList() {

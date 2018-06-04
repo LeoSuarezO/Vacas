@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import com.uptc.livestock.model.dao.LoginManage;
+import com.uptc.livestock.model.dao.RancherDao;
 import com.uptc.livestock.utilities.PasswordUtil;
 import com.uptc.livestock.view.AppFrame;
 import com.uptc.livestock.view.Language;
@@ -18,7 +19,10 @@ public class LivestockListener implements ActionListener {
 	
 	private AppFrame appFrame;
 
+	private RancherDao rancherDao;
+	
 	private LivestockListener() {
+		rancherDao= new RancherDao();
 	}
 
 	@Override
@@ -97,10 +101,12 @@ public class LivestockListener implements ActionListener {
 	
 	private void accountCreation() {
 		String[] data = signInJDialog.getUserData();
+		String username=null;
 		try {
-			LoginManage.generateUsername(data[0], data[1], PasswordUtil.getHash(data[4]));
+			username = LoginManage.generateUsername(data[0], data[1], PasswordUtil.getHash(data[4]));
 		} catch (Exception exc) {
 		}
+		rancherDao.createRancher(data, username);
 		changeToLogin();
 	}
 	
