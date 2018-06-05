@@ -31,7 +31,6 @@ public class RecentUserJPanel extends JPanel{
 		panel.add(addHerdButton);
 		panel.add(addBovineButton);
 		
-		
 	}
 	
 	public void setStringsLanguage(String herdbutton, String bovinebutton) {

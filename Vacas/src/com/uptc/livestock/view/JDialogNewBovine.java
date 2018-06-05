@@ -49,7 +49,8 @@ public class JDialogNewBovine extends JDialog {
 	private void init() {
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setBounds(50, 50, 500, 400);
-
+		this.setModal(true);
+		
 		JPanel contentPanel;
 
 		this.getContentPane().setBackground(new Color(17, 122, 101));
@@ -172,10 +173,9 @@ public class JDialogNewBovine extends JDialog {
 		gbc_raceComBox.gridx = 1;
 		gbc_raceComBox.gridy = 3;
 		contentPanel.add(raceComBox, gbc_raceComBox);
-	
 		
-
 		bullRadBtn = new JRadioButton();
+		bullRadBtn.setSelected(true);
 		bullRadBtn.addActionListener(LivestockListener.getIntance());
 		bullRadBtn.setActionCommand(Command.NEW_BULLDATA_RAD_BTN.toString());
 		bullRadBtn.setOpaque(false);
@@ -183,7 +183,7 @@ public class JDialogNewBovine extends JDialog {
 		cowRadBtn.addActionListener(LivestockListener.getIntance());
 		cowRadBtn.setActionCommand(Command.NEW_COWDATA_RAD_BTN.toString());
 		cowRadBtn.setOpaque(false);
-
+		
 		genderBtnGroup = new ButtonGroup();
 		genderBtnGroup.add(bullRadBtn);
 		genderBtnGroup.add(cowRadBtn);
@@ -191,8 +191,8 @@ public class JDialogNewBovine extends JDialog {
 		JPanel genderBtnsContent = new JPanel();
 		genderBtnsContent.setOpaque(false);
 		genderBtnsContent.setLayout(new FlowLayout(0, 10, 0));
-		genderBtnsContent.add(cowRadBtn);
 		genderBtnsContent.add(bullRadBtn);
+		genderBtnsContent.add(cowRadBtn);
 
 		GridBagConstraints gbc_genderBtnsContent = new GridBagConstraints();
 		gbc_genderBtnsContent.insets = new Insets(0, 5, 5, 5);
