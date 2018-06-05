@@ -7,6 +7,7 @@ import com.uptc.livestock.model.dao.LoginManage;
 import com.uptc.livestock.model.dao.RancherDao;
 import com.uptc.livestock.utilities.PasswordUtil;
 import com.uptc.livestock.view.AppFrame;
+import com.uptc.livestock.view.JDialogNewBovine;
 import com.uptc.livestock.view.Language;
 import com.uptc.livestock.view.LogInJDialog;
 import com.uptc.livestock.view.SignInJDialog;
@@ -17,6 +18,7 @@ public class LivestockListener implements ActionListener {
 
 	private SignInJDialog signInJDialog;
 	private LogInJDialog logInJDialog;
+	private JDialogNewBovine jDialogNewBovine;
 	
 	private AppFrame appFrame;
 	private MainJPanel mainJPanel;
@@ -49,6 +51,16 @@ public class LivestockListener implements ActionListener {
 			case LOGIN_ACCOUNT:
 				loginAccount();
 				break;
+			case NEW_COWDATA_RAD_BTN:
+				newCowData();
+				break;
+			case NEW_BULLDATA_RAD_BTN:
+				newCowData();
+				break;
+			case BTNCANCEL_NEWBOVINE_JDIALOG:
+				cancelBtnNewBovine();
+				break;
+				
 			default:
 				System.out.println("Este boton " + e.getActionCommand() + " no tiene funcion aun");
 				break;
@@ -122,6 +134,14 @@ public class LivestockListener implements ActionListener {
 		disposeLogin();
 	}
 	
+	public void newCowData() {
+		jDialogNewBovine.showCowDataFields();
+	}
+	
+	public void cancelBtnNewBovine() {
+		jDialogNewBovine.dispose();
+	}
+	
 	public void setSignInJDialog(SignInJDialog signInJDialog) {
 		this.signInJDialog = signInJDialog;
 	}
@@ -136,5 +156,9 @@ public class LivestockListener implements ActionListener {
 	
 	public void setMainJPanel(MainJPanel mainJPanel) {
 		this.mainJPanel = mainJPanel;
+	}
+	
+	public void setJDialogNewBovine(JDialogNewBovine jDialogNewBovine) {
+		this.jDialogNewBovine = jDialogNewBovine;
 	}
 }
